@@ -1,0 +1,7 @@
+com/dentist/MvcConfig.class
+com/dentist/controller/UploadController.class
+com/dentist/Application.class
+com/dentist/domains/Item.class
+com/dentist/services/ItemsService.class
+com/dentist/model/User.class
+com/dentist/WebSecurityConfig.class

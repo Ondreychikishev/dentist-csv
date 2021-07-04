@@ -1,0 +1,62 @@
+
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Denitst-csv</title>
+
+    <!--Bootstrap 4-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container py-5">
+    <div class="row">
+        <div class="col-10 mx-auto">
+            <h1>Цены успешно обновлены</h1>
+            <div id="browse_app">
+                <a class="btn btn-large btn-info" href="/index">Назад</a>
+            </div>
+            <form th:action="@{/logout}" method="post">
+                <button type="submit" class="btn btn-danger">Выйти</button>
+            </form>
+            <!--display error if any-->
+            <div class="alert alert-danger" role="alert" th:if="${!status}">
+                <strong>Error:</strong>
+                <span th:text="${message}"></span>
+            </div>
+
+            <!--display users list-->
+            <table class="table table-striped" th:if="${status}">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">Код услуги</th>
+                    <th scope="col">Название</th>
+                    <th scope="col">Цена</th>
+                    <th scope="col">Тип</th>
+                    <th scope="col">Категория</th>
+                    <th scope="col">Лаборатория</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="item, i : ${items}">
+                    <th scope="row" th:text="${i.index + 1}"></th>
+                    <td th:text="${item.id}"></td>
+                    <td th:text="${item.code}"></td>
+                    <td th:text="${item.title}"></td>
+                    <td th:text="${item.price}"></td>
+                    <!--<td th:text="${item.type}"></td>
+                    <td th:text="${item.category}"></td>
+                    <td th:text="${item.laboratory}"></td>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
